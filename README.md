@@ -40,16 +40,16 @@ Make two changes:
 
 1. Find `camera_auto_detect` near the top and set it to `0`:
 
-```ini
-camera_auto_detect=0
-```
+   ```ini
+   camera_auto_detect=0
+   ```
 
 2. Add `dtoverlay=imx283` under the `[all]` section at the bottom of the file:
 
-```ini
-[all]
-dtoverlay=imx283
-```
+   ```ini
+   [all]
+   dtoverlay=imx283
+   ```
 
 *If camera is connected to cam0 port, use `dtoverlay=imx283,cam0` instead. See [cam0](#cam0).*
 
@@ -69,7 +69,7 @@ rpicam-hello --list-cameras
 
 Expected output:
 
-```
+```text
 Available cameras
 -----------------
 0 : imx283 [5472x3648 12-bit RGGB] (/base/axi/pcie@1000120000/rp1/i2c@70000/imx283@1a)
@@ -96,7 +96,7 @@ rpicam-still -o test.jpg
 `imx283` overlay supports comma-separated options to override defaults:
 
 | option | description | default |
-|--------|-------------|---------|
+| --- | --- | --- |
 | [`cam0`](#cam0) | Use cam0 port instead of cam1 | cam1 |
 | [`clock-frequency=<Hz>`](#clock-frequency) | Sensor input clock (Hz) | 24000000 |
 | [`link-frequency=<Hz>`](#link-frequency) | MIPI link frequency (Hz) | 720000000 |
@@ -129,7 +129,7 @@ dtoverlay=imx283,link-frequency=360000000
 ## Output formats
 
 | Link frequency | Data rate / lane | Lanes | Bit depth | Width | Height | Max FPS |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | **5472×3648 (full resolution)** | | | | | | |
 | 720 MHz | 1440 Mbps | 4 | 10-bit | 5472 | 3648 | 18 fps |
 | 720 MHz | 1440 Mbps | 4 | 12-bit | 5472 | 3648 | 18 fps |
@@ -161,7 +161,7 @@ dmesg | grep imx283
 
 `failed to read chip id` means sensor does not answer on I2C:
 
-```
+```text
 imx283 0-001a: Error reading reg 0x3000: -121
 imx283 0-001a: failed to read chip id b, with error -121
 imx283 0-001a: probe with driver imx283 failed with error -121
